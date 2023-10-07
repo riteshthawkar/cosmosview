@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="intro">
+  <div class="intro-text">
+    <h1>Discover the Cosmos: Planets, Stars, Asteroids, Beyond.</h1>
+    <p>
+      Unveil the mysteries of the celestial tapestry as you journey through planets, stars, asteroids, and beyond
+    </p>
+    <a href="{% url 'discover_view' %}"><button class="btn">Get Started</button></a>
+  </div>
+  <div class="cover"></div>
+</div>
+
+<div class="explore">
+  <div class="explore-text">
+    <div class="img-container">
+      <img class="explore-img-backword" src="https://images.unsplash.com/photo-1590388143860-6594f1fbc1f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Planets" />
+    </div>
+    <div class="right-container">
+      <div class="headers">
+        <h1 class="heading">Search the Cosmos: Explore Our Celestial Database</h1>
+        <p>
+          Unlock the Secrets of the Universe: Dive into a vast celestial database and find detailed information about planets, stars, asteroids, and more, guiding your journey through the cosmos.
+        </p>
+        <a href="{% url 'discover_view' %}" class="btn">Explore</a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="explore-text-backword">
+    <div class="img-container">
+      <img class="explore-img" src="https://images.unsplash.com/photo-1657886708649-eda40992a10f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="Planets" />
+    </div>
+    <div class="right-container">
+      <div class="headers">
+        <h1 class="heading">Visualize the Cosmos: 3D Views of Astronomical Marvels</h1>
+        <p>
+          Immerse yourself in an awe-inspiring visual odyssey through mesmerizing 3D views, unraveling the beauty and complexity of the astronomical universe in astonishing detail.
+        </p>
+        <a href="{% url '3d_view' %}" class="btn">View</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
+

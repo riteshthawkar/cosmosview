@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block tailwind %}
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock tailwind %}
+
+
+
+{% block content %}
+
+<div class="w-full bg-zinc-900" style="background-color: black;">
+    <div class="relative pt-60 pb-40 flex justify-center items-center z-2">
+      <div class="absolute t-0 l-0 w-full h-full z-2" style="background-image: url('https://images.unsplash.com/photo-1662413915284-d190cfe0f99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1985&q=80'); background-repeat: repeat-x; background-size: cover; background-position: center;"></div>
+      <div class=" block rounded-lg border-gray-900 md:w-4/6 sm:w-2/3 w-full mx-1 z-20">
+        <p class="w-full form-check-label inline-block text-6xl font-bold text-center text-white mb-8 text-violet-200 ">Discover the Solar System and Beyond</p>
+        <form class="text-center" action="{% url 'data_view' %}" method="post">
+          {% csrf_token %}
+          <div class="w-4/5 sm:w-full mx-auto md:flex md:justify-between md:items-center mb-10 gap-4 text-left">
+            <div class="form-group md:w-3/5 w-full mb-2">
+              <label class="form-check-label inline-block text-gray-100 mb-1 text-xl font-bold" for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control block
+                w-full
+                px-3
+                py-3
+                font-normal
+                text-gray-100
+                bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                md:m-0
+                mb-5
+                text-2xl
+                bg-gray-900
+                bg-opacity-10
+                focus:text-gray-100 focus:border-blue-600 focus:outline-none"
+                placeholder="Eg. Jupiter">
+            </div>
+            <div class="form-group md:w-2/5 w-full mb-2">
+              <label class="form-check-label inline-block text-gray-100 mb-1 text-xl font-bold" for="type">Category</label>
+              <input type="text" id="type" name="category" class="form-control block
+                w-full
+                px-3
+                py-3
+                font-normal
+                text-gray-100
+                bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                md:m-0
+                mb-5
+                text-2xl
+                bg-gray-900
+                bg-opacity-10
+                focus:text-gray-100 focus:border-blue-600 focus:outline-none"
+                placeholder="Eg. planet">
+                
+            </div>
+          </div>
+          
+          <button type="submit" class="
+            w-fit
+            md:px-10
+            md:py-4
+            px-5
+            py-2
+            bg-trasparent
+            text-xl
+            text-gray-200
+            leading-tight
+            rounded
+            shadow-md
+            border border-solid border-gray-300
+            hover:bg-white hover:text-black
+              
+            ">Search</button>
+        </form>
+      </div>
+    </div>
+
+    <section class="text-gray-400 body-font">
+      <div class="container px-5 py-24 mx-auto flex flex-wrap">
+        <div class="w-full my-20">
+          <h1 class="md:text-6xl text-5xl font-bold title-font text-center text-white mb-4">Discover by Type</h1>
+        </div>
+        <div class="md:w-9/10 mx-auto mb-20 text-center">
+          <div class="md:flex gap-10 h-8xl justify-evenly mb-20">
+            
+            <div class="relative w-96 p-1 mb-2 text-center rounded-xl mx-auto" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full h-full object-contain rounded-xl object-center block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PIA22946-Jupiter-RedSpot-JunoSpacecraft-20190212.jpg/1024px-PIA22946-Jupiter-RedSpot-JunoSpacecraft-20190212.jpg">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'planet' %}">
+                  <div>
+                    <p class="mb-2">Planets</p>
+                    <p class="text-gray-500 text-sm">Image of planet Jupiter</p>
+                  </div>
+                </a>
+                
+              </div> 
+            </div>
+            <div class="relative w-96 p-1 mb-2 text-center rounded-xl mx-auto" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full h-full object-contain rounded-xl object-center block" src="{% static 'images/star.png' %} ">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'star' %}">
+                  <div>
+                    <p class="mb-2">Stars</p>
+                    <p class="text-gray-500 text-sm">Image of Sun</p>
+                  </div>
+                </a>
+                
+              </div>  
+            </div>
+          </div>
+          <div class="md:flex gap-10 h-8xl justify-evenly mb-20">
+            <div class="relative w-full p-1 mb-2 text-center rounded-xl" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full h-full object-fill rounded-xl object-center block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Milky_way.png/900px-Milky_way.png?20200923175720">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'galaxy' %}">
+                  <div>
+                    <p class="mb-2">Galaxy</p>
+                    <p class="text-gray-500 text-sm">Artistic Image of Milky way Galaxy</p>
+                  </div>
+                </a>
+                
+              </div>  
+            </div>
+            <div class="relative w-full p-1 mb-2 text-center rounded-xl" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full h-full object-contain rounded-xl object-center block" src="https://th-thumbnailer.cdn-si-edu.com/fcfBgtutHjW8nRfghG-Zzadc268=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/98/4c/984c3532-8acb-45dc-9b09-910a010153bd/catseye_w11.jpg">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'nebula' %}">
+                  <div>
+                    <p class="mb-2">Nebula</p>
+                    <p class="text-gray-500 text-sm">Image of Cat's Eye Nebula(X-ray)</p>
+                  </div>
+                </a>
+                
+              </div> 
+            </div>
+            
+          </div>
+          <div class="md:flex gap-10 h-8xl justify-between mb-20">
+            <div alt="gallery" class="relative w-full p-1 mb-2 text-center  rounded-xl" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img class="w-full h-full object-contain obit rounded-xl object-center block" src="https://th-thumbnailer.cdn-si-edu.com/_9AWwipBu-DNBh97MTKqL6MDifc=/1000x750/filters:no_upscale():focal(3206x1649:3207x1650)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/cf/15/cf15c6ea-fcd8-4c29-a461-31ef74e6e11e/m87_lo_april11_polarimetric_average_image_ml_deband-cc-8bit-srgbwide.jpg">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'black hole' %}">
+                  <div>
+                    <p class="mb-2">Black Hole</p>
+                    <p class="text-gray-500 text-sm w-2/3 mx-auto">Direct image of a supermassive black hole at the core of Messier 87 in polarized light taken by The Event Horizon Telescope collaboration.</p>
+                  </div>
+                </a>
+              </div> 
+            </div>
+            
+            <div class="relative w-full p-1 mb-2 text-center rounded-xl" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full h-full object-contain obit rounded-xl object-center block" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/TRAPPIST-1e_artist_impression_2018.png/480px-TRAPPIST-1e_artist_impression_2018.png">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'exoplanet' %}">
+                  <div>
+                    <p class="mb-2">Exoplanets</p>
+                    <p class="text-gray-500 text-sm">Artistic Image of an Exoplanet TRAPPIST-1e</p>
+                  </div>
+                </a>
+              </div> 
+            </div>
+          </div>
+          <div class="md:flex gap-10 h-8xl justify-evenly mb-20">
+            <div class="relative w-96 p-1 mb-40 text-center rounded-xl mx-auto" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full object-contain rounded-xl object-center block mx-auto" src="https://solarsystem.nasa.gov/system/resources/detail_files/510_comet_on_3_august_2014.png">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="w-full h-full flex items-center justify-center" href="{% url 'list_view' 'comet' %}">
+                  <div>
+                    <p class="mb-2">Comet</p>
+                    <p class="text-gray-500 text-sm">Comet 67P/Churyumov-Gerasimenko by Rosetta's OSIRIS narrow-angle camera on 3 August 2014, from a distance of 285 km (177 miles)</p>
+                  </div>
+                </a>
+                
+              </div> 
+            </div>
+            <div class="relative w-96 p-1 mb-2 text-center rounded-xl mx-auto" onmouseenter="toggledisplay(this)" onmouseleave="toggledisplay(this)">
+              <img alt="gallery" class="w-full object-contain rounded-xl object-center block" width="50px" height="50px" src="{% static 'images/asteroid.jpeg' %}">
+              <div class="absolute hidden top-0 left-0 text-5xl 2xl w-full h-full flex flex-col items-center justify-center text-gray-100" style="background-color: rgba(0, 0, 0, 0.84);">
+                <a class="h-full w-full flex items-center justify-center" href="{% url 'list_view' 'asteroid' %}">
+                  <div>
+                    <p class="mb-2">Asteroid</p>
+                    <p class="text-gray-500 text-sm">Artistic Image of Asteroid</p>
+                  </div>
+                </a>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+<script>
+    function toggledisplay(obj){
+        if(obj.childNodes[3].classList.contains("hidden")){
+          obj.childNodes[3].classList.remove("hidden");
+        }
+        else{
+          obj.childNodes[3].classList.add("hidden")
+        }
+    }
+</script>
+
+
+{% endblock content %}
+
+
+

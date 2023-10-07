@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block tailwind %}
+<script src="https://cdn.tailwindcss.com"></script>
+{% endblock tailwind %}
+
+{% block content %}
+
+        {% if items %}
+
+        <section class="text-gray-600 body-font mt-20 min-h-screen h-fit mb-60" style="background-image: url('https://ak.picdn.net/shutterstock/videos/1062624187/thumb/1.jpg?ip=x480'); background-repeat: repeat;">
+            
+            <div class="xl:container px-5 pt-8 pb-24 mx-auto">
+                <div class="mb-8 border-b-2 border-gray-600">
+                    <p class="text-white text-3xl text-gray-400 mb-1">Results for "<span>{{ type }}</span>"</p>
+                </div>
+                <div class="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2">
+                    {% for item in items%}
+
+                    <div class="p-4 w-full">
+                        <a href="{% url 'list_data_view' item.id %}">
+                            <div class="h-full flex flex-col items-center text-center bg-slate-900 p-3 rounded-xl">
+                                <img alt="team" class="flex-shrink-0 rounded-lg w-full h-72 md:h-56 object-cover object-center mb-2" src="{{ item.img_url }}">
+                                <div class="w-full text-left">
+                                    <h3 class="title-font text-sm text-gray-400">{{ item.category }}</h3>
+                                    <h2 class="text-gray-100 mb-1 text-xl">{{ item.name }}</h2>
+                                </div>
+                            </div>
+                        </a>
+                        
+                    </div>
+
+                    {% endfor %}
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+        {% else %}
+        <div class="w-full h-screen flex flex-col items-center justify-center">
+            <p class="text-2xl text-gray-500 mb-3">No results found!</p> 
+            <button id="back" class="px-4 py-2 bg-blue-600 hover:bg-blue-500">GO BACK</button>
+        </div>
+
+        {% endif %}
+
+        <script>
+            document.getElementById("back").addEventListener("click", ()=>{
+              history.back();
+            })
+          </script>
+    
+{% endblock %}

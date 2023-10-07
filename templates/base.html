@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universe</title>
+    <!-- CSS File -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block tailwind %}
+    
+    {% endblock tailwind %}
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  </head>
+  <body style="background-image: url('https://ak.picdn.net/shutterstock/videos/1062624187/thumb/1.jpg?ip=x480'); background-repeat: repeat;">
+    <div class="main-container">
+      <div class="header">
+        <nav class="navigation">
+          <div class="nav">
+            <div class="nav-section-1">
+              <h1 class="nav-logo text-2xl font-bold text" style="color: cyan"><a href="/">COSMOS</a></h1>
+              <ul class="navbar">
+                <a href="{% url 'index_view' %}"><li class="nav-item">Home</li></a>
+                <a href="{% url 'discover_view' %}"><li class="nav-item">Discover</li></a>
+                <a href="{% url '3d_view' %}"><li class="nav-item">3D View</li></a>
+                <a href="{% url 'contact_view' %}"><li class="nav-item">Contact Us</li></a>
+              </ul>
+            </div>
+          </div>
+          <div class="ham-menu">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Menu_Alt_02"> <path id="Vector" d="M11 17H19M5 12H19M11 7H19" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+            </span>
+          </div>
+        </nav>
+
+        {% block content %}
+        
+        {% endblock content %}
+
+      <footer class="footer">
+        SolarPedia © 2022. All rights are reserved.
+      </footer>
+
+    </div>
+    <script src="{% static 'js/index.js' %}"></script>
+  </body>
+</html>
